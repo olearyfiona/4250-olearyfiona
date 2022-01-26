@@ -39,7 +39,7 @@ namespace Mine.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.ReadAsync(true);
+                var items = await DataStore.GetItemsAsync(true);
                 foreach (var item in items)
                 {
                     Items.Add(item);
