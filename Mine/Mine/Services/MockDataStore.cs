@@ -47,16 +47,12 @@ namespace Mine.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<ItemModel> IndexAsync(string id)
-        {
-            return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
-        }
         public async Task<ItemModel> ReadAsync(string id)
         {
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<ItemModel>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<ItemModel>> IndexAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(items);
         }
