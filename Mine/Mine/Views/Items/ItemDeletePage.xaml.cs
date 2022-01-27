@@ -35,16 +35,6 @@ namespace Mine.Views
             viewModel = new ItemReadViewModel(item);
             BindingContext = viewModel;
         }
-        /// <summary>
-        /// Pops from delete page, deletes item
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public async void DeleteItem_Clicked(object sender, EventArgs e)
-        {
-            MessagingCenter.Send(this, "DeleteItem", viewModel.Item);
-            await Navigation.PopModalAsync();
-        }
 
         /// <summary>
         /// Pops from delete page, cancels delete
@@ -53,6 +43,16 @@ namespace Mine.Views
         /// <param name="e"></param>
         public async void CancelItem_Clicked(object sender, EventArgs e)
         {
+            await Navigation.PopModalAsync();
+        }
+        /// <summary>
+        /// Pops from delete page, deletes item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public async void DeleteItem_Clicked(object sender, EventArgs e)
+        {
+            MessagingCenter.Send(this, "DeleteItem", viewModel.Item);
             await Navigation.PopModalAsync();
         }
     }
