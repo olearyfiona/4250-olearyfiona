@@ -90,5 +90,23 @@ namespace Mine.ViewModels
 
             return result;
         }
+
+        public async Task<bool> UpdateAsync(ItemModel data)
+        {
+            //Check if the record exists, if it does not, then null is returned
+            var record = await ReadAsync(data.Id);
+            if (record == null)
+            {
+                return false;
+            }
+
+            //Call to remove it from the Data Store
+            var result = await DataStore.DeleteAsync(data.Id);
+
+            var canExecute = LoadItemsCommand.CanExecute(null);
+            LoadItemsCommand.Execute(null);
+
+            return result;
+        }
     }
 }
