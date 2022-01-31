@@ -32,7 +32,15 @@ namespace Mine.ViewModels
             {
                 var data = item as ItemModel;
       
-                await DataStore.DeleteAsync(data.Id);
+                await DeleteAsync(data);
+            });
+
+            MessagingCenter.Subscribe<ItemUpdatePage, ItemModel>(this, "UpdateItem", async (obj, item) =>
+            {
+                var data = item as ItemModel;
+
+                await UpdateAsync(data);
+                
             });
         }
 
@@ -91,6 +99,11 @@ namespace Mine.ViewModels
             return result;
         }
 
+        /// <summary>
+        /// Update the item in DB
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public async Task<bool> UpdateAsync(ItemModel data)
         {
             //Check if the record exists, if it does not, then null is returned
@@ -108,5 +121,6 @@ namespace Mine.ViewModels
 
             return result;
         }
+
     }
 }

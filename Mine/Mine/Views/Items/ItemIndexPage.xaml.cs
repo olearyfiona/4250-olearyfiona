@@ -48,8 +48,12 @@ namespace Mine.Views
         {
             base.OnAppearing();
 
+            //If no data, then set it for needing refresh
             if (viewModel.DataSet.Count == 0)
+            {
                 viewModel.LoadItemsCommand.Execute(null);
+            }
+
         }
     }
 }
