@@ -76,6 +76,7 @@ namespace Mine.ViewModels
         /// <returns></returns>
         public async Task<ItemModel> ReadAsync(string id)
         {
+            //ERROR UPDATING ITEMS BECUASE WE HAVE NOT IMPLEMENTED ID'S YET
             var result = await DataStore.ReadAsync(id);
 
             return result;
