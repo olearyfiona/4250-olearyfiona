@@ -34,7 +34,11 @@ namespace Mine.Services
                 initialized = true;
             }
         }
-
+        /// <summary>
+        /// Insert data in db
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public async Task<bool> CreateAsync(ItemModel item)
         {
             if(item == null)
